@@ -6,13 +6,13 @@
             "sources": [
                 "./9111FILE.c"
             ], "include_dirs": [
-                "../../../include"
+                "C:/ADLINK/PCIS-DASK/include"
             ],
            'link_settings': {
 
                 'libraries': [
 
-                '../../../lib/pci-dask.lib',
+                'C:/ADLINK/PCIS-DASK/lib/pci-dask.lib',
 
                 ],
 
