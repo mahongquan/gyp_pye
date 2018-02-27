@@ -3,3 +3,4 @@ Default
 obj
 *.exp
 *.pdb
+*.cache
