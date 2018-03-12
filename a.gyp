@@ -1,18 +1,20 @@
 {
     "targets": [
         {
-            "target_name": "myapp",
-            "type": "executable",
+            "target_name": "spam.cp36-win32",
+            "product_extension":"pyd",
+            "product_dir":".",
+            "type": "shared_library",
             "sources": [
-                "./9111FILE.c"
+                "./spammodule.c"
             ], "include_dirs": [
-                "C:/ADLINK/PCIS-DASK/include"
+                "D:/Python36-32/include"
             ],
            'link_settings': {
 
                 'libraries': [
 
-                'C:/ADLINK/PCIS-DASK/lib/pci-dask.lib',
+                'D:/Python36-32/libs/python36.lib',
 
                 ],
 

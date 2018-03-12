@@ -1,4 +1,6 @@
 Default
+*.pyd
+*.ilk
 *.map
 obj
 *.exp
