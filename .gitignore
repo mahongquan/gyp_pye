@@ -1,4 +1,6 @@
 Default
+build
+*.sdf
 *.pyd
 *.ilk
 *.map
