@@ -23,6 +23,31 @@ void setChannelOn(U32 *DO_Value, U16 channel)
     U16 v = 1 << channel;
     *DO_Value = (*DO_Value) | (v);
 }
+I16 PutchanelVolt(U16 Channel, F64 voltage)
+{
+    I16 err = AO_VWriteChannel(obj_card6208, Channel, voltage);
+    if (err != 0)
+    {
+        printf("write error=%d\n", err);
+        return err;
+    }
+    return 0;
+}//fun
+F64 GetchanelVolt(U16 Channel)
+{
+
+    printf("Channel=%d\n", Channel);
+    F64 voltage;
+    U16 AdRange = AD_B_10_V;
+    I16 err = AI_VReadChannel(obj_card, Channel, AdRange , &voltage);
+    if (err != 0)
+    {
+        printf("read error=%d\n", err);
+        return -1;
+    }
+    printf("volt=%f\n", voltage);
+    return (voltage);
+}
 U32 GetDI()
 {
     U32 Value;
@@ -107,15 +132,33 @@ static PyObject *spam_plusOne(PyObject *self, PyObject *args)
     value_ += para2;
     return PyLong_FromLong(value_);
 }
+static PyObject *spam_GetchanelVolt (PyObject *self, PyObject *args)
+{
+    int para2 = 0;
+    if (!PyArg_ParseTuple(args, "i", &para2))
+        return NULL;
+    F64 value_ = GetchanelVolt(para2);
+    return PyFloat_FromDouble(value_);
+}
+static PyObject *spam_PutchanelVolt (PyObject *self, PyObject *args)
+{
+    int para2 = 0;
+    double out=0;
+    if (!PyArg_ParseTuple(args, "id", &para2,&out))
+        return NULL;
+    I16 value_ = PutchanelVolt(para2,out);
+    return PyLong_FromLong(value_);
+}
+
 static PyObject *spam_getDI(PyObject *self, PyObject *args)
 {
-    U32 value=GetDI();
+    U32 value = GetDI();
     return PyLong_FromLong(value);
 }
 
 static PyObject *spam_getDO(PyObject *self, PyObject *args)
 {
-    U32 value=GetDO();
+    U32 value = GetDO();
     return PyLong_FromLong(value);
 }
 
@@ -132,6 +175,8 @@ static PyMethodDef SpamMethods[] =
     {"link",  spam_link, METH_VARARGS,  "link."},
     {"getDO",  spam_getDO, METH_VARARGS,  "GetDO."},
     {"getDI",  spam_getDI, METH_VARARGS,  "GetDI."},
+    {"getchanelVolt",  spam_GetchanelVolt, METH_VARARGS,  "GetchanelVolt" },
+    {"putchanelVolt",  spam_PutchanelVolt, METH_VARARGS,  "PutchanelVolt" },
     {"plusOne",  spam_plusOne, METH_VARARGS,  "plus one."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
