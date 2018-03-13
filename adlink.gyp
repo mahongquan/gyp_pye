@@ -1,12 +1,12 @@
 {
     "targets": [
         {
-            "target_name": "spam.cp36-win32",
+            "target_name": "adlink.cp36-win32",
             "product_extension":"pyd",
             "product_dir":".",
             "type": "shared_library",
             "sources": [
-                "./spammodule.c"
+                "./adlinkmodule.c"
             ], "include_dirs": [
                 "D:/Python36-32/include",
                 "C:/ADLINK/PCIS-DASK/include"

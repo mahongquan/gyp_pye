@@ -51,7 +51,7 @@
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="a.gyp"/>
+    <None Include="adlink.gyp"/>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="spammodule.c"/>

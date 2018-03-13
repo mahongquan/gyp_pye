@@ -7,9 +7,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1AD309BB-04AA-53FF-E0DB-A3A231D664AE}</ProjectGuid>
+    <ProjectGuid>{1B0FD8AD-83F3-C126-FE91-AD60081A8D95}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>spam</RootNamespace>
+    <RootNamespace>adlink.cp36-win32</RootNamespace>
     <IgnoreWarnCompileDuplicatedFilename>true</IgnoreWarnCompileDuplicatedFilename>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props"/>
@@ -30,28 +30,31 @@
     <ExecutablePath>$(ExecutablePath);$(MSBuildProjectDirectory)\.\bin\;$(MSBuildProjectDirectory)\.\bin\</ExecutablePath>
     <IntDir>$(Configuration)\obj\$(ProjectName)\</IntDir>
     <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Default|Win32'">.pyd</TargetExt>
+    <TargetExt Condition="'$(Configuration)|$(Platform)'=='Default|Win32'">.pyd</TargetExt>
     <TargetName>$(ProjectName)</TargetName>
-    <TargetPath>$(OutDir)\$(ProjectName)$(TargetExt)</TargetPath>
+    <TargetPath>$(ProjectName).pyd</TargetPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Default|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Python36-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Python36-32\include;C:\ADLINK\PCIS-DASK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>D:\Python36-32\libs\python36.lib</AdditionalDependencies>
-      <OutputFile>$(OutDir)$(ProjectName)$(TargetExt)</OutputFile>
+      <AdditionalDependencies>D:\Python36-32\libs\python36.lib;C:\ADLINK\PCIS-DASK\lib\pci-dask.lib</AdditionalDependencies>
+      <OutputFile>.\$(ProjectName).pyd</OutputFile>
+      <TargetExt>.pyd</TargetExt>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>D:\Python36-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Python36-32\include;C:\ADLINK\PCIS-DASK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <None Include="a.gyp"/>
+    <None Include="adlink.gyp"/>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="spammodule.c"/>
+    <ClCompile Include="adlinkmodule.c"/>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets"/>
   <Import Project="$(VCTargetsPath)\BuildCustomizations\masm.targets"/>

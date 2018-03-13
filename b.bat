@@ -1,1 +1,1 @@
-msbuild a.sln
+msbuild adlink.sln
