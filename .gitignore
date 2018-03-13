@@ -1,5 +1,6 @@
 Default
 build
+.vs
 *.opensdf
 *.sdf
 *.pyd
