@@ -10,15 +10,19 @@ def say_hello_to(name):
     print("Hello %s!" % name)
 def sin2(name):
     return f(name)
-def link():
-    cdef unsigned int r, card,card_type, card_num,Port
-    cdef unsigned long Value
-    cdef unsigned long *pValue = &Value
-    card_type=21#9111
-    card_num=0
-    card=adlinklib.Register_Card(card_type,card_num)
-    print(card)
-    Port=0
-    r=adlinklib.DI_ReadPort(card,Port,pValue)
-    print(Value)
+class Adlink:
+    def __init__(self):
+        pass
+    def link(self):
+        cdef unsigned int card_type, card_num
+        card_type=21#9111
+        card_num=0
+        self.card=adlinklib.Register_Card(card_type,card_num)
+        return self.card
+    def getdi(self):
+        cdef unsigned long Value
+        cdef unsigned int Port,r
+        Port=0
+        r=adlinklib.DI_ReadPort(self.card,Port,&Value)
+        return(Value)
 
