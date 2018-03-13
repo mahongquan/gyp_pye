@@ -915,6 +915,12 @@ static PyObject* __pyx_print = 0;
 static PyObject* __pyx_print_kwargs = 0;
 #endif
 
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_int(unsigned int value);
+
+/* CIntToPy.proto */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_long(unsigned long value);
+
 /* PrintOne.proto */
 static int __Pyx_PrintOne(PyObject* stream, PyObject *o);
 
@@ -963,14 +969,18 @@ int __pyx_module_is_main_adlink = 0;
 /* Implementation of 'adlink' */
 static const char __pyx_k_r[] = "r";
 static const char __pyx_k_end[] = "end";
+static const char __pyx_k_Port[] = "Port";
+static const char __pyx_k_card[] = "card";
 static const char __pyx_k_file[] = "file";
 static const char __pyx_k_link[] = "link";
 static const char __pyx_k_main[] = "__main__";
 static const char __pyx_k_name[] = "name";
 static const char __pyx_k_sin2[] = "sin2";
 static const char __pyx_k_test[] = "__test__";
+static const char __pyx_k_Value[] = "Value";
 static const char __pyx_k_print[] = "print";
 static const char __pyx_k_adlink[] = "adlink";
+static const char __pyx_k_pValue[] = "pValue";
 static const char __pyx_k_Hello_s[] = "Hello %s!";
 static const char __pyx_k_card_num[] = "card_num";
 static const char __pyx_k_card_type[] = "card_type";
@@ -979,9 +989,12 @@ static const char __pyx_k_say_hello_to[] = "say_hello_to";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_byte_string_value_is_NULL[] = "byte string value is NULL";
 static PyObject *__pyx_kp_s_Hello_s;
+static PyObject *__pyx_n_s_Port;
+static PyObject *__pyx_n_s_Value;
 static PyObject *__pyx_n_s_adlink;
 static PyObject *__pyx_kp_s_adlink_pyx;
 static PyObject *__pyx_kp_s_byte_string_value_is_NULL;
+static PyObject *__pyx_n_s_card;
 static PyObject *__pyx_n_s_card_num;
 static PyObject *__pyx_n_s_card_type;
 static PyObject *__pyx_n_s_cline_in_traceback;
@@ -990,6 +1003,7 @@ static PyObject *__pyx_n_s_file;
 static PyObject *__pyx_n_s_link;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
+static PyObject *__pyx_n_s_pValue;
 static PyObject *__pyx_n_s_print;
 static PyObject *__pyx_n_s_r;
 static PyObject *__pyx_n_s_say_hello_to;
@@ -1200,7 +1214,7 @@ static PyObject *__pyx_pf_6adlink_2sin2(CYTHON_UNUSED PyObject *__pyx_self, PyOb
  * def sin2(name):
  *     return f(name)             # <<<<<<<<<<<<<<
  * def link():
- *     cdef int r, card_type, card_num
+ *     cdef unsigned int r, card,card_type, card_num,Port
  */
   __Pyx_XDECREF(__pyx_r);
   __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_name); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 12, __pyx_L1_error)
@@ -1233,8 +1247,8 @@ static PyObject *__pyx_pf_6adlink_2sin2(CYTHON_UNUSED PyObject *__pyx_self, PyOb
  * def sin2(name):
  *     return f(name)
  * def link():             # <<<<<<<<<<<<<<
- *     cdef int r, card_type, card_num
- *     card_type=21#9111
+ *     cdef unsigned int r, card,card_type, card_num,Port
+ *     cdef unsigned long Value
  */
 
 /* Python wrapper */
@@ -1252,56 +1266,101 @@ static PyObject *__pyx_pw_6adlink_5link(PyObject *__pyx_self, CYTHON_UNUSED PyOb
 }
 
 static PyObject *__pyx_pf_6adlink_4link(CYTHON_UNUSED PyObject *__pyx_self) {
-  int __pyx_v_r;
-  int __pyx_v_card_type;
-  int __pyx_v_card_num;
+  CYTHON_UNUSED unsigned int __pyx_v_r;
+  unsigned int __pyx_v_card;
+  unsigned int __pyx_v_card_type;
+  unsigned int __pyx_v_card_num;
+  unsigned int __pyx_v_Port;
+  unsigned long __pyx_v_Value;
+  unsigned long *__pyx_v_pValue;
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("link", 0);
 
-  /* "adlink.pyx":15
- * def link():
- *     cdef int r, card_type, card_num
+  /* "adlink.pyx":16
+ *     cdef unsigned int r, card,card_type, card_num,Port
+ *     cdef unsigned long Value
+ *     cdef unsigned long *pValue = &Value             # <<<<<<<<<<<<<<
+ *     card_type=21#9111
+ *     card_num=0
+ */
+  __pyx_v_pValue = (&__pyx_v_Value);
+
+  /* "adlink.pyx":17
+ *     cdef unsigned long Value
+ *     cdef unsigned long *pValue = &Value
  *     card_type=21#9111             # <<<<<<<<<<<<<<
  *     card_num=0
- *     r=adlinklib.Register_Card(card_type,card_num)
+ *     card=adlinklib.Register_Card(card_type,card_num)
  */
   __pyx_v_card_type = 21;
 
-  /* "adlink.pyx":16
- *     cdef int r, card_type, card_num
+  /* "adlink.pyx":18
+ *     cdef unsigned long *pValue = &Value
  *     card_type=21#9111
  *     card_num=0             # <<<<<<<<<<<<<<
- *     r=adlinklib.Register_Card(card_type,card_num)
- *     print(r)
+ *     card=adlinklib.Register_Card(card_type,card_num)
+ *     print(card)
  */
   __pyx_v_card_num = 0;
 
-  /* "adlink.pyx":17
+  /* "adlink.pyx":19
  *     card_type=21#9111
  *     card_num=0
- *     r=adlinklib.Register_Card(card_type,card_num)             # <<<<<<<<<<<<<<
- *     print(r)
+ *     card=adlinklib.Register_Card(card_type,card_num)             # <<<<<<<<<<<<<<
+ *     print(card)
+ *     Port=0
  */
-  __pyx_v_r = Register_Card(__pyx_v_card_type, __pyx_v_card_num);
+  __pyx_v_card = Register_Card(__pyx_v_card_type, __pyx_v_card_num);
 
-  /* "adlink.pyx":18
+  /* "adlink.pyx":20
  *     card_num=0
- *     r=adlinklib.Register_Card(card_type,card_num)
- *     print(r)             # <<<<<<<<<<<<<<
+ *     card=adlinklib.Register_Card(card_type,card_num)
+ *     print(card)             # <<<<<<<<<<<<<<
+ *     Port=0
+ *     r=adlinklib.DI_ReadPort(card,Port,pValue)
  */
-  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_r); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_int(__pyx_v_card); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "adlink.pyx":21
+ *     card=adlinklib.Register_Card(card_type,card_num)
+ *     print(card)
+ *     Port=0             # <<<<<<<<<<<<<<
+ *     r=adlinklib.DI_ReadPort(card,Port,pValue)
+ *     print(Value)
+ */
+  __pyx_v_Port = 0;
+
+  /* "adlink.pyx":22
+ *     print(card)
+ *     Port=0
+ *     r=adlinklib.DI_ReadPort(card,Port,pValue)             # <<<<<<<<<<<<<<
+ *     print(Value)
+ * 
+ */
+  __pyx_v_r = DI_ReadPort(__pyx_v_card, __pyx_v_Port, __pyx_v_pValue);
+
+  /* "adlink.pyx":23
+ *     Port=0
+ *     r=adlinklib.DI_ReadPort(card,Port,pValue)
+ *     print(Value)             # <<<<<<<<<<<<<<
+ * 
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_unsigned_long(__pyx_v_Value); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 23, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 23, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
   /* "adlink.pyx":13
  * def sin2(name):
  *     return f(name)
  * def link():             # <<<<<<<<<<<<<<
- *     cdef int r, card_type, card_num
- *     card_type=21#9111
+ *     cdef unsigned int r, card,card_type, card_num,Port
+ *     cdef unsigned long Value
  */
 
   /* function exit code */
@@ -1355,9 +1414,12 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Hello_s, __pyx_k_Hello_s, sizeof(__pyx_k_Hello_s), 0, 0, 1, 0},
+  {&__pyx_n_s_Port, __pyx_k_Port, sizeof(__pyx_k_Port), 0, 0, 1, 1},
+  {&__pyx_n_s_Value, __pyx_k_Value, sizeof(__pyx_k_Value), 0, 0, 1, 1},
   {&__pyx_n_s_adlink, __pyx_k_adlink, sizeof(__pyx_k_adlink), 0, 0, 1, 1},
   {&__pyx_kp_s_adlink_pyx, __pyx_k_adlink_pyx, sizeof(__pyx_k_adlink_pyx), 0, 0, 1, 0},
   {&__pyx_kp_s_byte_string_value_is_NULL, __pyx_k_byte_string_value_is_NULL, sizeof(__pyx_k_byte_string_value_is_NULL), 0, 0, 1, 0},
+  {&__pyx_n_s_card, __pyx_k_card, sizeof(__pyx_k_card), 0, 0, 1, 1},
   {&__pyx_n_s_card_num, __pyx_k_card_num, sizeof(__pyx_k_card_num), 0, 0, 1, 1},
   {&__pyx_n_s_card_type, __pyx_k_card_type, sizeof(__pyx_k_card_type), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
@@ -1366,6 +1428,7 @@ static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_n_s_link, __pyx_k_link, sizeof(__pyx_k_link), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
+  {&__pyx_n_s_pValue, __pyx_k_pValue, sizeof(__pyx_k_pValue), 0, 0, 1, 1},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
   {&__pyx_n_s_r, __pyx_k_r, sizeof(__pyx_k_r), 0, 0, 1, 1},
   {&__pyx_n_s_say_hello_to, __pyx_k_say_hello_to, sizeof(__pyx_k_say_hello_to), 0, 0, 1, 1},
@@ -1409,13 +1472,13 @@ static int __Pyx_InitCachedConstants(void) {
  * def sin2(name):
  *     return f(name)
  * def link():             # <<<<<<<<<<<<<<
- *     cdef int r, card_type, card_num
- *     card_type=21#9111
+ *     cdef unsigned int r, card,card_type, card_num,Port
+ *     cdef unsigned long Value
  */
-  __pyx_tuple__5 = PyTuple_Pack(3, __pyx_n_s_r, __pyx_n_s_card_type, __pyx_n_s_card_num); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_tuple__5 = PyTuple_Pack(7, __pyx_n_s_r, __pyx_n_s_card, __pyx_n_s_card_type, __pyx_n_s_card_num, __pyx_n_s_Port, __pyx_n_s_Value, __pyx_n_s_pValue); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_adlink_pyx, __pyx_n_s_link, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(0, 0, 7, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_adlink_pyx, __pyx_n_s_link, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1603,8 +1666,8 @@ static int __pyx_pymod_exec_adlink(PyObject *__pyx_pyinit_module)
  * def sin2(name):
  *     return f(name)
  * def link():             # <<<<<<<<<<<<<<
- *     cdef int r, card_type, card_num
- *     card_type=21#9111
+ *     cdef unsigned int r, card,card_type, card_num,Port
+ *     cdef unsigned long Value
  */
   __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6adlink_5link, NULL, __pyx_n_s_adlink); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -2025,6 +2088,68 @@ bad:
     return -1;
 }
 #endif
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_int(unsigned int value) {
+    const unsigned int neg_one = (unsigned int) -1, const_zero = (unsigned int) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(unsigned int) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(unsigned int) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(unsigned int) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(unsigned int) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(unsigned int) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(unsigned int),
+                                     little, !is_unsigned);
+    }
+}
+
+/* CIntToPy */
+static CYTHON_INLINE PyObject* __Pyx_PyInt_From_unsigned_long(unsigned long value) {
+    const unsigned long neg_one = (unsigned long) -1, const_zero = (unsigned long) 0;
+    const int is_unsigned = neg_one > const_zero;
+    if (is_unsigned) {
+        if (sizeof(unsigned long) < sizeof(long)) {
+            return PyInt_FromLong((long) value);
+        } else if (sizeof(unsigned long) <= sizeof(unsigned long)) {
+            return PyLong_FromUnsignedLong((unsigned long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(unsigned long) <= sizeof(unsigned PY_LONG_LONG)) {
+            return PyLong_FromUnsignedLongLong((unsigned PY_LONG_LONG) value);
+#endif
+        }
+    } else {
+        if (sizeof(unsigned long) <= sizeof(long)) {
+            return PyInt_FromLong((long) value);
+#ifdef HAVE_LONG_LONG
+        } else if (sizeof(unsigned long) <= sizeof(PY_LONG_LONG)) {
+            return PyLong_FromLongLong((PY_LONG_LONG) value);
+#endif
+        }
+    }
+    {
+        int one = 1; int little = (int)*(unsigned char *)&one;
+        unsigned char *bytes = (unsigned char *)&value;
+        return _PyLong_FromByteArray(bytes, sizeof(unsigned long),
+                                     little, !is_unsigned);
+    }
+}
 
 /* PrintOne */
 #if !CYTHON_COMPILING_IN_PYPY && PY_MAJOR_VERSION < 3
