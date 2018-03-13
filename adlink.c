@@ -4,17 +4,30 @@
 {
     "distutils": {
         "depends": [
-            "libcalg\\src\\queue.h"
+            "adlink\\Include\\Dask.h"
         ],
         "include_dirs": [
-            "."
+            ".",
+            "C:/ADLINK/PCIS-DASK/include",
+            "D:/Program Files/Microsoft Visual Studio 14.0/VC/include",
+            "D:/Program Files/Microsoft Visual Studio 14.0/VC/atlmfc/include",
+            "C:/Program Files/Windows Kits/10/Include/10.0.10150.0/ucrt",
+            "C:/Program Files/Windows Kits/8.1/Include/um",
+            "C:/Program Files/Windows Kits/8.1/Include/shared",
+            "C:/Program Files/Windows Kits/8.1/Include/winrt"
         ],
-        "name": "hello",
+        "libraries": [
+            "PCI-Dask"
+        ],
+        "library_dirs": [
+            "C:/ADLINK/PCIS-DASK/lib"
+        ],
+        "name": "adlink",
         "sources": [
-            "hello.pyx"
+            "adlink.pyx"
         ]
     },
-    "module_name": "hello"
+    "module_name": "adlink"
 }
 END: Cython Metadata */
 
@@ -536,12 +549,12 @@ static CYTHON_INLINE float __PYX_NAN() {
   #endif
 #endif
 
-#define __PYX_HAVE__hello
-#define __PYX_HAVE_API__hello
+#define __PYX_HAVE__adlink
+#define __PYX_HAVE_API__adlink
 #include <string.h>
 #include <stdlib.h>
 #include <math.h>
-#include "libcalg/src/queue.h"
+#include "adlink/Include/Dask.h"
 #ifdef _OPENMP
 #include <omp.h>
 #endif /* _OPENMP */
@@ -745,25 +758,10 @@ static const char *__pyx_filename;
 
 
 static const char *__pyx_f[] = {
-  "hello.pyx",
-  "stringsource",
+  "adlink.pyx",
 };
 
 /*--- Type declarations ---*/
-struct __pyx_obj_5hello_Queue;
-
-/* "hello.pyx":4
- * from libc.math cimport sin
- * cimport cqueue
- * cdef class Queue:             # <<<<<<<<<<<<<<
- *     cdef cqueue.Queue* _c_queue
- *     def __cinit__(self):
- */
-struct __pyx_obj_5hello_Queue {
-  PyObject_HEAD
-  Queue *_c_queue;
-};
-
 
 /* --- Runtime support code (head) --- */
 /* Refnanny.proto */
@@ -845,23 +843,6 @@ static CYTHON_INLINE PyObject* __Pyx_PyObject_GetAttrStr(PyObject* obj, PyObject
 #define __Pyx_PyObject_GetAttrStr(o,n) PyObject_GetAttr(o,n)
 #endif
 
-/* GetBuiltinName.proto */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name);
-
-/* RaiseArgTupleInvalid.proto */
-static void __Pyx_RaiseArgtupleInvalid(const char* func_name, int exact,
-    Py_ssize_t num_min, Py_ssize_t num_max, Py_ssize_t num_found);
-
-/* KeywordStringCheck.proto */
-static int __Pyx_CheckKeywordStrings(PyObject *kwdict, const char* function_name, int kw_allowed);
-
-/* PyObjectCall.proto */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw);
-#else
-#define __Pyx_PyObject_Call(func, arg, kw) PyObject_Call(func, arg, kw)
-#endif
-
 /* PyThreadStateGet.proto */
 #if CYTHON_FAST_THREAD_STATE
 #define __Pyx_PyThreadState_declare  PyThreadState *__pyx_tstate;
@@ -897,12 +878,6 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
 #define __Pyx_ErrRestore(type, value, tb)  PyErr_Restore(type, value, tb)
 #define __Pyx_ErrFetch(type, value, tb)  PyErr_Fetch(type, value, tb)
 #endif
-
-/* RaiseException.proto */
-static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause);
-
-/* SetupReduce.proto */
-static int __Pyx_setup_reduce(PyObject* type_obj);
 
 /* CLineInTraceback.proto */
 #ifdef CYTHON_CLINE_IN_TRACEBACK
@@ -977,350 +952,74 @@ static int __Pyx_InitStrings(__Pyx_StringTabEntry *t);
 
 /* Module declarations from 'libc.math' */
 
-/* Module declarations from 'cqueue' */
+/* Module declarations from 'adlinklib' */
 
-/* Module declarations from 'hello' */
-static PyTypeObject *__pyx_ptype_5hello_Queue = 0;
-static double __pyx_f_5hello_f(double); /*proto*/
-#define __Pyx_MODULE_NAME "hello"
-extern int __pyx_module_is_main_hello;
-int __pyx_module_is_main_hello = 0;
+/* Module declarations from 'adlink' */
+static double __pyx_f_6adlink_f(double); /*proto*/
+#define __Pyx_MODULE_NAME "adlink"
+extern int __pyx_module_is_main_adlink;
+int __pyx_module_is_main_adlink = 0;
 
-/* Implementation of 'hello' */
-static PyObject *__pyx_builtin_MemoryError;
-static PyObject *__pyx_builtin_TypeError;
+/* Implementation of 'adlink' */
+static const char __pyx_k_r[] = "r";
 static const char __pyx_k_end[] = "end";
 static const char __pyx_k_file[] = "file";
+static const char __pyx_k_link[] = "link";
 static const char __pyx_k_main[] = "__main__";
-static const char __pyx_k_name[] = "__name__";
+static const char __pyx_k_name[] = "name";
 static const char __pyx_k_sin2[] = "sin2";
 static const char __pyx_k_test[] = "__test__";
-static const char __pyx_k_hello[] = "hello";
 static const char __pyx_k_print[] = "print";
-static const char __pyx_k_name_2[] = "name";
-static const char __pyx_k_reduce[] = "__reduce__";
+static const char __pyx_k_adlink[] = "adlink";
 static const char __pyx_k_Hello_s[] = "Hello %s!";
-static const char __pyx_k_getstate[] = "__getstate__";
-static const char __pyx_k_setstate[] = "__setstate__";
-static const char __pyx_k_TypeError[] = "TypeError";
-static const char __pyx_k_hello_pyx[] = "hello.pyx";
-static const char __pyx_k_reduce_ex[] = "__reduce_ex__";
-static const char __pyx_k_MemoryError[] = "MemoryError";
+static const char __pyx_k_card_num[] = "card_num";
+static const char __pyx_k_card_type[] = "card_type";
+static const char __pyx_k_adlink_pyx[] = "adlink.pyx";
 static const char __pyx_k_say_hello_to[] = "say_hello_to";
-static const char __pyx_k_reduce_cython[] = "__reduce_cython__";
-static const char __pyx_k_setstate_cython[] = "__setstate_cython__";
 static const char __pyx_k_cline_in_traceback[] = "cline_in_traceback";
 static const char __pyx_k_byte_string_value_is_NULL[] = "byte string value is NULL";
-static const char __pyx_k_no_default___reduce___due_to_non[] = "no default __reduce__ due to non-trivial __cinit__";
 static PyObject *__pyx_kp_s_Hello_s;
-static PyObject *__pyx_n_s_MemoryError;
-static PyObject *__pyx_n_s_TypeError;
+static PyObject *__pyx_n_s_adlink;
+static PyObject *__pyx_kp_s_adlink_pyx;
 static PyObject *__pyx_kp_s_byte_string_value_is_NULL;
+static PyObject *__pyx_n_s_card_num;
+static PyObject *__pyx_n_s_card_type;
 static PyObject *__pyx_n_s_cline_in_traceback;
 static PyObject *__pyx_n_s_end;
 static PyObject *__pyx_n_s_file;
-static PyObject *__pyx_n_s_getstate;
-static PyObject *__pyx_n_s_hello;
-static PyObject *__pyx_kp_s_hello_pyx;
+static PyObject *__pyx_n_s_link;
 static PyObject *__pyx_n_s_main;
 static PyObject *__pyx_n_s_name;
-static PyObject *__pyx_n_s_name_2;
-static PyObject *__pyx_kp_s_no_default___reduce___due_to_non;
 static PyObject *__pyx_n_s_print;
-static PyObject *__pyx_n_s_reduce;
-static PyObject *__pyx_n_s_reduce_cython;
-static PyObject *__pyx_n_s_reduce_ex;
+static PyObject *__pyx_n_s_r;
 static PyObject *__pyx_n_s_say_hello_to;
-static PyObject *__pyx_n_s_setstate;
-static PyObject *__pyx_n_s_setstate_cython;
 static PyObject *__pyx_n_s_sin2;
 static PyObject *__pyx_n_s_test;
-static int __pyx_pf_5hello_5Queue___cinit__(struct __pyx_obj_5hello_Queue *__pyx_v_self); /* proto */
-static void __pyx_pf_5hello_5Queue_2__dealloc__(struct __pyx_obj_5hello_Queue *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5hello_5Queue_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_5hello_Queue *__pyx_v_self); /* proto */
-static PyObject *__pyx_pf_5hello_5Queue_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_5hello_Queue *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state); /* proto */
-static PyObject *__pyx_pf_5hello_say_hello_to(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name); /* proto */
-static PyObject *__pyx_pf_5hello_2sin2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name); /* proto */
-static PyObject *__pyx_tp_new_5hello_Queue(PyTypeObject *t, PyObject *a, PyObject *k); /*proto*/
+static PyObject *__pyx_pf_6adlink_say_hello_to(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name); /* proto */
+static PyObject *__pyx_pf_6adlink_2sin2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name); /* proto */
+static PyObject *__pyx_pf_6adlink_4link(CYTHON_UNUSED PyObject *__pyx_self); /* proto */
 static PyObject *__pyx_tuple_;
-static PyObject *__pyx_tuple__2;
 static PyObject *__pyx_tuple__3;
 static PyObject *__pyx_tuple__5;
+static PyObject *__pyx_codeobj__2;
 static PyObject *__pyx_codeobj__4;
 static PyObject *__pyx_codeobj__6;
 
-/* "hello.pyx":6
- * cdef class Queue:
- *     cdef cqueue.Queue* _c_queue
- *     def __cinit__(self):             # <<<<<<<<<<<<<<
- *         self._c_queue = cqueue.queue_new()
- *         if self._c_queue is NULL:
- */
-
-/* Python wrapper */
-static int __pyx_pw_5hello_5Queue_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds); /*proto*/
-static int __pyx_pw_5hello_5Queue_1__cinit__(PyObject *__pyx_v_self, PyObject *__pyx_args, PyObject *__pyx_kwds) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__cinit__ (wrapper)", 0);
-  if (unlikely(PyTuple_GET_SIZE(__pyx_args) > 0)) {
-    __Pyx_RaiseArgtupleInvalid("__cinit__", 1, 0, 0, PyTuple_GET_SIZE(__pyx_args)); return -1;}
-  if (unlikely(__pyx_kwds) && unlikely(PyDict_Size(__pyx_kwds) > 0) && unlikely(!__Pyx_CheckKeywordStrings(__pyx_kwds, "__cinit__", 0))) return -1;
-  __pyx_r = __pyx_pf_5hello_5Queue___cinit__(((struct __pyx_obj_5hello_Queue *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static int __pyx_pf_5hello_5Queue___cinit__(struct __pyx_obj_5hello_Queue *__pyx_v_self) {
-  int __pyx_r;
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  __Pyx_RefNannySetupContext("__cinit__", 0);
-
-  /* "hello.pyx":7
- *     cdef cqueue.Queue* _c_queue
- *     def __cinit__(self):
- *         self._c_queue = cqueue.queue_new()             # <<<<<<<<<<<<<<
- *         if self._c_queue is NULL:
- *             raise MemoryError()
- */
-  __pyx_v_self->_c_queue = queue_new();
-
-  /* "hello.pyx":8
- *     def __cinit__(self):
- *         self._c_queue = cqueue.queue_new()
- *         if self._c_queue is NULL:             # <<<<<<<<<<<<<<
- *             raise MemoryError()
- *     def __dealloc__(self):
- */
-  __pyx_t_1 = ((__pyx_v_self->_c_queue == NULL) != 0);
-  if (__pyx_t_1) {
-
-    /* "hello.pyx":9
- *         self._c_queue = cqueue.queue_new()
- *         if self._c_queue is NULL:
- *             raise MemoryError()             # <<<<<<<<<<<<<<
- *     def __dealloc__(self):
- *         if self._c_queue is not NULL:
- */
-    PyErr_NoMemory(); __PYX_ERR(0, 9, __pyx_L1_error)
-
-    /* "hello.pyx":8
- *     def __cinit__(self):
- *         self._c_queue = cqueue.queue_new()
- *         if self._c_queue is NULL:             # <<<<<<<<<<<<<<
- *             raise MemoryError()
- *     def __dealloc__(self):
- */
-  }
-
-  /* "hello.pyx":6
- * cdef class Queue:
- *     cdef cqueue.Queue* _c_queue
- *     def __cinit__(self):             # <<<<<<<<<<<<<<
- *         self._c_queue = cqueue.queue_new()
- *         if self._c_queue is NULL:
- */
-
-  /* function exit code */
-  __pyx_r = 0;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("hello.Queue.__cinit__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = -1;
-  __pyx_L0:;
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "hello.pyx":10
- *         if self._c_queue is NULL:
- *             raise MemoryError()
- *     def __dealloc__(self):             # <<<<<<<<<<<<<<
- *         if self._c_queue is not NULL:
- *             cqueue.queue_free(self._c_queue)
- */
-
-/* Python wrapper */
-static void __pyx_pw_5hello_5Queue_3__dealloc__(PyObject *__pyx_v_self); /*proto*/
-static void __pyx_pw_5hello_5Queue_3__dealloc__(PyObject *__pyx_v_self) {
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__dealloc__ (wrapper)", 0);
-  __pyx_pf_5hello_5Queue_2__dealloc__(((struct __pyx_obj_5hello_Queue *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-}
-
-static void __pyx_pf_5hello_5Queue_2__dealloc__(struct __pyx_obj_5hello_Queue *__pyx_v_self) {
-  __Pyx_RefNannyDeclarations
-  int __pyx_t_1;
-  __Pyx_RefNannySetupContext("__dealloc__", 0);
-
-  /* "hello.pyx":11
- *             raise MemoryError()
- *     def __dealloc__(self):
- *         if self._c_queue is not NULL:             # <<<<<<<<<<<<<<
- *             cqueue.queue_free(self._c_queue)
- * cdef double f(double x):
- */
-  __pyx_t_1 = ((__pyx_v_self->_c_queue != NULL) != 0);
-  if (__pyx_t_1) {
-
-    /* "hello.pyx":12
- *     def __dealloc__(self):
- *         if self._c_queue is not NULL:
- *             cqueue.queue_free(self._c_queue)             # <<<<<<<<<<<<<<
- * cdef double f(double x):
- *     return sin(x*x)
- */
-    queue_free(__pyx_v_self->_c_queue);
-
-    /* "hello.pyx":11
- *             raise MemoryError()
- *     def __dealloc__(self):
- *         if self._c_queue is not NULL:             # <<<<<<<<<<<<<<
- *             cqueue.queue_free(self._c_queue)
- * cdef double f(double x):
- */
-  }
-
-  /* "hello.pyx":10
- *         if self._c_queue is NULL:
- *             raise MemoryError()
- *     def __dealloc__(self):             # <<<<<<<<<<<<<<
- *         if self._c_queue is not NULL:
- *             cqueue.queue_free(self._c_queue)
- */
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-}
-
-/* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- * def __setstate_cython__(self, __pyx_state):
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_5hello_5Queue_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused); /*proto*/
-static PyObject *__pyx_pw_5hello_5Queue_5__reduce_cython__(PyObject *__pyx_v_self, CYTHON_UNUSED PyObject *unused) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__reduce_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5hello_5Queue_4__reduce_cython__(((struct __pyx_obj_5hello_Queue *)__pyx_v_self));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_5hello_5Queue_4__reduce_cython__(CYTHON_UNUSED struct __pyx_obj_5hello_Queue *__pyx_v_self) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("__reduce_cython__", 0);
-
-  /* "(tree fragment)":2
- * def __reduce_cython__(self):
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
- * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple_, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 2, __pyx_L1_error)
-
-  /* "(tree fragment)":1
- * def __reduce_cython__(self):             # <<<<<<<<<<<<<<
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- * def __setstate_cython__(self, __pyx_state):
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("hello.Queue.__reduce_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "(tree fragment)":3
- * def __reduce_cython__(self):
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- */
-
-/* Python wrapper */
-static PyObject *__pyx_pw_5hello_5Queue_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state); /*proto*/
-static PyObject *__pyx_pw_5hello_5Queue_7__setstate_cython__(PyObject *__pyx_v_self, PyObject *__pyx_v___pyx_state) {
-  PyObject *__pyx_r = 0;
-  __Pyx_RefNannyDeclarations
-  __Pyx_RefNannySetupContext("__setstate_cython__ (wrapper)", 0);
-  __pyx_r = __pyx_pf_5hello_5Queue_6__setstate_cython__(((struct __pyx_obj_5hello_Queue *)__pyx_v_self), ((PyObject *)__pyx_v___pyx_state));
-
-  /* function exit code */
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-static PyObject *__pyx_pf_5hello_5Queue_6__setstate_cython__(CYTHON_UNUSED struct __pyx_obj_5hello_Queue *__pyx_v_self, CYTHON_UNUSED PyObject *__pyx_v___pyx_state) {
-  PyObject *__pyx_r = NULL;
-  __Pyx_RefNannyDeclarations
-  PyObject *__pyx_t_1 = NULL;
-  __Pyx_RefNannySetupContext("__setstate_cython__", 0);
-
-  /* "(tree fragment)":4
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
- */
-  __pyx_t_1 = __Pyx_PyObject_Call(__pyx_builtin_TypeError, __pyx_tuple__2, NULL); if (unlikely(!__pyx_t_1)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_t_1);
-  __Pyx_Raise(__pyx_t_1, 0, 0, 0);
-  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
-  __PYX_ERR(1, 4, __pyx_L1_error)
-
-  /* "(tree fragment)":3
- * def __reduce_cython__(self):
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- * def __setstate_cython__(self, __pyx_state):             # <<<<<<<<<<<<<<
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- */
-
-  /* function exit code */
-  __pyx_L1_error:;
-  __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("hello.Queue.__setstate_cython__", __pyx_clineno, __pyx_lineno, __pyx_filename);
-  __pyx_r = NULL;
-  __Pyx_XGIVEREF(__pyx_r);
-  __Pyx_RefNannyFinishContext();
-  return __pyx_r;
-}
-
-/* "hello.pyx":13
- *         if self._c_queue is not NULL:
- *             cqueue.queue_free(self._c_queue)
+/* "adlink.pyx":4
+ * from libc.math cimport sin
+ * cimport adlinklib
  * cdef double f(double x):             # <<<<<<<<<<<<<<
  *     return sin(x*x)
  * cdef parse_charptr_to_py_int(char* s):
  */
 
-static double __pyx_f_5hello_f(double __pyx_v_x) {
+static double __pyx_f_6adlink_f(double __pyx_v_x) {
   double __pyx_r;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("f", 0);
 
-  /* "hello.pyx":14
- *             cqueue.queue_free(self._c_queue)
+  /* "adlink.pyx":5
+ * cimport adlinklib
  * cdef double f(double x):
  *     return sin(x*x)             # <<<<<<<<<<<<<<
  * cdef parse_charptr_to_py_int(char* s):
@@ -1329,9 +1028,9 @@ static double __pyx_f_5hello_f(double __pyx_v_x) {
   __pyx_r = sin((__pyx_v_x * __pyx_v_x));
   goto __pyx_L0;
 
-  /* "hello.pyx":13
- *         if self._c_queue is not NULL:
- *             cqueue.queue_free(self._c_queue)
+  /* "adlink.pyx":4
+ * from libc.math cimport sin
+ * cimport adlinklib
  * cdef double f(double x):             # <<<<<<<<<<<<<<
  *     return sin(x*x)
  * cdef parse_charptr_to_py_int(char* s):
@@ -1343,7 +1042,7 @@ static double __pyx_f_5hello_f(double __pyx_v_x) {
   return __pyx_r;
 }
 
-/* "hello.pyx":15
+/* "adlink.pyx":6
  * cdef double f(double x):
  *     return sin(x*x)
  * cdef parse_charptr_to_py_int(char* s):             # <<<<<<<<<<<<<<
@@ -1351,13 +1050,13 @@ static double __pyx_f_5hello_f(double __pyx_v_x) {
  *     return atoi(s)   # note: atoi() has no error detection!
  */
 
-static PyObject *__pyx_f_5hello_parse_charptr_to_py_int(char *__pyx_v_s) {
+static PyObject *__pyx_f_6adlink_parse_charptr_to_py_int(char *__pyx_v_s) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("parse_charptr_to_py_int", 0);
 
-  /* "hello.pyx":16
+  /* "adlink.pyx":7
  *     return sin(x*x)
  * cdef parse_charptr_to_py_int(char* s):
  *     assert s is not NULL, "byte string value is NULL"             # <<<<<<<<<<<<<<
@@ -1368,12 +1067,12 @@ static PyObject *__pyx_f_5hello_parse_charptr_to_py_int(char *__pyx_v_s) {
   if (unlikely(!Py_OptimizeFlag)) {
     if (unlikely(!((__pyx_v_s != NULL) != 0))) {
       PyErr_SetObject(PyExc_AssertionError, __pyx_kp_s_byte_string_value_is_NULL);
-      __PYX_ERR(0, 16, __pyx_L1_error)
+      __PYX_ERR(0, 7, __pyx_L1_error)
     }
   }
   #endif
 
-  /* "hello.pyx":17
+  /* "adlink.pyx":8
  * cdef parse_charptr_to_py_int(char* s):
  *     assert s is not NULL, "byte string value is NULL"
  *     return atoi(s)   # note: atoi() has no error detection!             # <<<<<<<<<<<<<<
@@ -1381,13 +1080,13 @@ static PyObject *__pyx_f_5hello_parse_charptr_to_py_int(char *__pyx_v_s) {
  *     print("Hello %s!" % name)
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __Pyx_PyInt_From_int(atoi(__pyx_v_s)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 17, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyInt_From_int(atoi(__pyx_v_s)); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 8, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = 0;
   goto __pyx_L0;
 
-  /* "hello.pyx":15
+  /* "adlink.pyx":6
  * cdef double f(double x):
  *     return sin(x*x)
  * cdef parse_charptr_to_py_int(char* s):             # <<<<<<<<<<<<<<
@@ -1398,7 +1097,7 @@ static PyObject *__pyx_f_5hello_parse_charptr_to_py_int(char *__pyx_v_s) {
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("hello.parse_charptr_to_py_int", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("adlink.parse_charptr_to_py_int", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = 0;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1406,7 +1105,7 @@ static PyObject *__pyx_f_5hello_parse_charptr_to_py_int(char *__pyx_v_s) {
   return __pyx_r;
 }
 
-/* "hello.pyx":18
+/* "adlink.pyx":9
  *     assert s is not NULL, "byte string value is NULL"
  *     return atoi(s)   # note: atoi() has no error detection!
  * def say_hello_to(name):             # <<<<<<<<<<<<<<
@@ -1415,38 +1114,38 @@ static PyObject *__pyx_f_5hello_parse_charptr_to_py_int(char *__pyx_v_s) {
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5hello_1say_hello_to(PyObject *__pyx_self, PyObject *__pyx_v_name); /*proto*/
-static PyMethodDef __pyx_mdef_5hello_1say_hello_to = {"say_hello_to", (PyCFunction)__pyx_pw_5hello_1say_hello_to, METH_O, 0};
-static PyObject *__pyx_pw_5hello_1say_hello_to(PyObject *__pyx_self, PyObject *__pyx_v_name) {
+static PyObject *__pyx_pw_6adlink_1say_hello_to(PyObject *__pyx_self, PyObject *__pyx_v_name); /*proto*/
+static PyMethodDef __pyx_mdef_6adlink_1say_hello_to = {"say_hello_to", (PyCFunction)__pyx_pw_6adlink_1say_hello_to, METH_O, 0};
+static PyObject *__pyx_pw_6adlink_1say_hello_to(PyObject *__pyx_self, PyObject *__pyx_v_name) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("say_hello_to (wrapper)", 0);
-  __pyx_r = __pyx_pf_5hello_say_hello_to(__pyx_self, ((PyObject *)__pyx_v_name));
+  __pyx_r = __pyx_pf_6adlink_say_hello_to(__pyx_self, ((PyObject *)__pyx_v_name));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5hello_say_hello_to(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name) {
+static PyObject *__pyx_pf_6adlink_say_hello_to(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   PyObject *__pyx_t_1 = NULL;
   __Pyx_RefNannySetupContext("say_hello_to", 0);
 
-  /* "hello.pyx":19
+  /* "adlink.pyx":10
  *     return atoi(s)   # note: atoi() has no error detection!
  * def say_hello_to(name):
  *     print("Hello %s!" % name)             # <<<<<<<<<<<<<<
  * def sin2(name):
  *     return f(name)
  */
-  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Hello_s, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 19, __pyx_L1_error)
+  __pyx_t_1 = __Pyx_PyString_Format(__pyx_kp_s_Hello_s, __pyx_v_name); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 19, __pyx_L1_error)
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 10, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "hello.pyx":18
+  /* "adlink.pyx":9
  *     assert s is not NULL, "byte string value is NULL"
  *     return atoi(s)   # note: atoi() has no error detection!
  * def say_hello_to(name):             # <<<<<<<<<<<<<<
@@ -1459,7 +1158,7 @@ static PyObject *__pyx_pf_5hello_say_hello_to(CYTHON_UNUSED PyObject *__pyx_self
   goto __pyx_L0;
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_1);
-  __Pyx_AddTraceback("hello.say_hello_to", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("adlink.say_hello_to", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1467,58 +1166,62 @@ static PyObject *__pyx_pf_5hello_say_hello_to(CYTHON_UNUSED PyObject *__pyx_self
   return __pyx_r;
 }
 
-/* "hello.pyx":20
+/* "adlink.pyx":11
  * def say_hello_to(name):
  *     print("Hello %s!" % name)
  * def sin2(name):             # <<<<<<<<<<<<<<
  *     return f(name)
+ * def link():
  */
 
 /* Python wrapper */
-static PyObject *__pyx_pw_5hello_3sin2(PyObject *__pyx_self, PyObject *__pyx_v_name); /*proto*/
-static PyMethodDef __pyx_mdef_5hello_3sin2 = {"sin2", (PyCFunction)__pyx_pw_5hello_3sin2, METH_O, 0};
-static PyObject *__pyx_pw_5hello_3sin2(PyObject *__pyx_self, PyObject *__pyx_v_name) {
+static PyObject *__pyx_pw_6adlink_3sin2(PyObject *__pyx_self, PyObject *__pyx_v_name); /*proto*/
+static PyMethodDef __pyx_mdef_6adlink_3sin2 = {"sin2", (PyCFunction)__pyx_pw_6adlink_3sin2, METH_O, 0};
+static PyObject *__pyx_pw_6adlink_3sin2(PyObject *__pyx_self, PyObject *__pyx_v_name) {
   PyObject *__pyx_r = 0;
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("sin2 (wrapper)", 0);
-  __pyx_r = __pyx_pf_5hello_2sin2(__pyx_self, ((PyObject *)__pyx_v_name));
+  __pyx_r = __pyx_pf_6adlink_2sin2(__pyx_self, ((PyObject *)__pyx_v_name));
 
   /* function exit code */
   __Pyx_RefNannyFinishContext();
   return __pyx_r;
 }
 
-static PyObject *__pyx_pf_5hello_2sin2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name) {
+static PyObject *__pyx_pf_6adlink_2sin2(CYTHON_UNUSED PyObject *__pyx_self, PyObject *__pyx_v_name) {
   PyObject *__pyx_r = NULL;
   __Pyx_RefNannyDeclarations
   double __pyx_t_1;
   PyObject *__pyx_t_2 = NULL;
   __Pyx_RefNannySetupContext("sin2", 0);
 
-  /* "hello.pyx":21
+  /* "adlink.pyx":12
  *     print("Hello %s!" % name)
  * def sin2(name):
  *     return f(name)             # <<<<<<<<<<<<<<
+ * def link():
+ *     cdef int r, card_type, card_num
  */
   __Pyx_XDECREF(__pyx_r);
-  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_name); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 21, __pyx_L1_error)
-  __pyx_t_2 = PyFloat_FromDouble(__pyx_f_5hello_f(__pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 21, __pyx_L1_error)
+  __pyx_t_1 = __pyx_PyFloat_AsDouble(__pyx_v_name); if (unlikely((__pyx_t_1 == (double)-1) && PyErr_Occurred())) __PYX_ERR(0, 12, __pyx_L1_error)
+  __pyx_t_2 = PyFloat_FromDouble(__pyx_f_6adlink_f(__pyx_t_1)); if (unlikely(!__pyx_t_2)) __PYX_ERR(0, 12, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_2);
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = 0;
   goto __pyx_L0;
 
-  /* "hello.pyx":20
+  /* "adlink.pyx":11
  * def say_hello_to(name):
  *     print("Hello %s!" % name)
  * def sin2(name):             # <<<<<<<<<<<<<<
  *     return f(name)
+ * def link():
  */
 
   /* function exit code */
   __pyx_L1_error:;
   __Pyx_XDECREF(__pyx_t_2);
-  __Pyx_AddTraceback("hello.sin2", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __Pyx_AddTraceback("adlink.sin2", __pyx_clineno, __pyx_lineno, __pyx_filename);
   __pyx_r = NULL;
   __pyx_L0:;
   __Pyx_XGIVEREF(__pyx_r);
@@ -1526,101 +1229,93 @@ static PyObject *__pyx_pf_5hello_2sin2(CYTHON_UNUSED PyObject *__pyx_self, PyObj
   return __pyx_r;
 }
 
-static PyObject *__pyx_tp_new_5hello_Queue(PyTypeObject *t, CYTHON_UNUSED PyObject *a, CYTHON_UNUSED PyObject *k) {
-  PyObject *o;
-  if (likely((t->tp_flags & Py_TPFLAGS_IS_ABSTRACT) == 0)) {
-    o = (*t->tp_alloc)(t, 0);
-  } else {
-    o = (PyObject *) PyBaseObject_Type.tp_new(t, __pyx_empty_tuple, 0);
-  }
-  if (unlikely(!o)) return 0;
-  if (unlikely(__pyx_pw_5hello_5Queue_1__cinit__(o, __pyx_empty_tuple, NULL) < 0)) goto bad;
-  return o;
-  bad:
-  Py_DECREF(o); o = 0;
-  return NULL;
+/* "adlink.pyx":13
+ * def sin2(name):
+ *     return f(name)
+ * def link():             # <<<<<<<<<<<<<<
+ *     cdef int r, card_type, card_num
+ *     card_type=21#9111
+ */
+
+/* Python wrapper */
+static PyObject *__pyx_pw_6adlink_5link(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused); /*proto*/
+static PyMethodDef __pyx_mdef_6adlink_5link = {"link", (PyCFunction)__pyx_pw_6adlink_5link, METH_NOARGS, 0};
+static PyObject *__pyx_pw_6adlink_5link(PyObject *__pyx_self, CYTHON_UNUSED PyObject *unused) {
+  PyObject *__pyx_r = 0;
+  __Pyx_RefNannyDeclarations
+  __Pyx_RefNannySetupContext("link (wrapper)", 0);
+  __pyx_r = __pyx_pf_6adlink_4link(__pyx_self);
+
+  /* function exit code */
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
 }
 
-static void __pyx_tp_dealloc_5hello_Queue(PyObject *o) {
-  #if CYTHON_USE_TP_FINALIZE
-  if (unlikely(PyType_HasFeature(Py_TYPE(o), Py_TPFLAGS_HAVE_FINALIZE) && Py_TYPE(o)->tp_finalize) && (!PyType_IS_GC(Py_TYPE(o)) || !_PyGC_FINALIZED(o))) {
-    if (PyObject_CallFinalizerFromDealloc(o)) return;
-  }
-  #endif
-  {
-    PyObject *etype, *eval, *etb;
-    PyErr_Fetch(&etype, &eval, &etb);
-    ++Py_REFCNT(o);
-    __pyx_pw_5hello_5Queue_3__dealloc__(o);
-    --Py_REFCNT(o);
-    PyErr_Restore(etype, eval, etb);
-  }
-  (*Py_TYPE(o)->tp_free)(o);
+static PyObject *__pyx_pf_6adlink_4link(CYTHON_UNUSED PyObject *__pyx_self) {
+  int __pyx_v_r;
+  int __pyx_v_card_type;
+  int __pyx_v_card_num;
+  PyObject *__pyx_r = NULL;
+  __Pyx_RefNannyDeclarations
+  PyObject *__pyx_t_1 = NULL;
+  __Pyx_RefNannySetupContext("link", 0);
+
+  /* "adlink.pyx":15
+ * def link():
+ *     cdef int r, card_type, card_num
+ *     card_type=21#9111             # <<<<<<<<<<<<<<
+ *     card_num=0
+ *     r=adlinklib.Register_Card(card_type,card_num)
+ */
+  __pyx_v_card_type = 21;
+
+  /* "adlink.pyx":16
+ *     cdef int r, card_type, card_num
+ *     card_type=21#9111
+ *     card_num=0             # <<<<<<<<<<<<<<
+ *     r=adlinklib.Register_Card(card_type,card_num)
+ *     print(r)
+ */
+  __pyx_v_card_num = 0;
+
+  /* "adlink.pyx":17
+ *     card_type=21#9111
+ *     card_num=0
+ *     r=adlinklib.Register_Card(card_type,card_num)             # <<<<<<<<<<<<<<
+ *     print(r)
+ */
+  __pyx_v_r = Register_Card(__pyx_v_card_type, __pyx_v_card_num);
+
+  /* "adlink.pyx":18
+ *     card_num=0
+ *     r=adlinklib.Register_Card(card_type,card_num)
+ *     print(r)             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __Pyx_PyInt_From_int(__pyx_v_r); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (__Pyx_PrintOne(0, __pyx_t_1) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "adlink.pyx":13
+ * def sin2(name):
+ *     return f(name)
+ * def link():             # <<<<<<<<<<<<<<
+ *     cdef int r, card_type, card_num
+ *     card_type=21#9111
+ */
+
+  /* function exit code */
+  __pyx_r = Py_None; __Pyx_INCREF(Py_None);
+  goto __pyx_L0;
+  __pyx_L1_error:;
+  __Pyx_XDECREF(__pyx_t_1);
+  __Pyx_AddTraceback("adlink.link", __pyx_clineno, __pyx_lineno, __pyx_filename);
+  __pyx_r = NULL;
+  __pyx_L0:;
+  __Pyx_XGIVEREF(__pyx_r);
+  __Pyx_RefNannyFinishContext();
+  return __pyx_r;
 }
-
-static PyMethodDef __pyx_methods_5hello_Queue[] = {
-  {"__reduce_cython__", (PyCFunction)__pyx_pw_5hello_5Queue_5__reduce_cython__, METH_NOARGS, 0},
-  {"__setstate_cython__", (PyCFunction)__pyx_pw_5hello_5Queue_7__setstate_cython__, METH_O, 0},
-  {0, 0, 0, 0}
-};
-
-static PyTypeObject __pyx_type_5hello_Queue = {
-  PyVarObject_HEAD_INIT(0, 0)
-  "hello.Queue", /*tp_name*/
-  sizeof(struct __pyx_obj_5hello_Queue), /*tp_basicsize*/
-  0, /*tp_itemsize*/
-  __pyx_tp_dealloc_5hello_Queue, /*tp_dealloc*/
-  0, /*tp_print*/
-  0, /*tp_getattr*/
-  0, /*tp_setattr*/
-  #if PY_MAJOR_VERSION < 3
-  0, /*tp_compare*/
-  #endif
-  #if PY_MAJOR_VERSION >= 3
-  0, /*tp_as_async*/
-  #endif
-  0, /*tp_repr*/
-  0, /*tp_as_number*/
-  0, /*tp_as_sequence*/
-  0, /*tp_as_mapping*/
-  0, /*tp_hash*/
-  0, /*tp_call*/
-  0, /*tp_str*/
-  0, /*tp_getattro*/
-  0, /*tp_setattro*/
-  0, /*tp_as_buffer*/
-  Py_TPFLAGS_DEFAULT|Py_TPFLAGS_HAVE_VERSION_TAG|Py_TPFLAGS_CHECKTYPES|Py_TPFLAGS_HAVE_NEWBUFFER|Py_TPFLAGS_BASETYPE, /*tp_flags*/
-  0, /*tp_doc*/
-  0, /*tp_traverse*/
-  0, /*tp_clear*/
-  0, /*tp_richcompare*/
-  0, /*tp_weaklistoffset*/
-  0, /*tp_iter*/
-  0, /*tp_iternext*/
-  __pyx_methods_5hello_Queue, /*tp_methods*/
-  0, /*tp_members*/
-  0, /*tp_getset*/
-  0, /*tp_base*/
-  0, /*tp_dict*/
-  0, /*tp_descr_get*/
-  0, /*tp_descr_set*/
-  0, /*tp_dictoffset*/
-  0, /*tp_init*/
-  0, /*tp_alloc*/
-  __pyx_tp_new_5hello_Queue, /*tp_new*/
-  0, /*tp_free*/
-  0, /*tp_is_gc*/
-  0, /*tp_bases*/
-  0, /*tp_mro*/
-  0, /*tp_cache*/
-  0, /*tp_subclasses*/
-  0, /*tp_weaklist*/
-  0, /*tp_del*/
-  0, /*tp_version_tag*/
-  #if PY_VERSION_HEX >= 0x030400a1
-  0, /*tp_finalize*/
-  #endif
-};
 
 static PyMethodDef __pyx_methods[] = {
   {0, 0, 0, 0}
@@ -1629,17 +1324,17 @@ static PyMethodDef __pyx_methods[] = {
 #if PY_MAJOR_VERSION >= 3
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 static PyObject* __pyx_pymod_create(PyObject *spec, PyModuleDef *def); /*proto*/
-static int __pyx_pymod_exec_hello(PyObject* module); /*proto*/
+static int __pyx_pymod_exec_adlink(PyObject* module); /*proto*/
 static PyModuleDef_Slot __pyx_moduledef_slots[] = {
   {Py_mod_create, (void*)__pyx_pymod_create},
-  {Py_mod_exec, (void*)__pyx_pymod_exec_hello},
+  {Py_mod_exec, (void*)__pyx_pymod_exec_adlink},
   {0, NULL}
 };
 #endif
 
 static struct PyModuleDef __pyx_moduledef = {
     PyModuleDef_HEAD_INIT,
-    "hello",
+    "adlink",
     0, /* m_doc */
   #if CYTHON_PEP489_MULTI_PHASE_INIT
     0, /* m_size */
@@ -1660,83 +1355,67 @@ static struct PyModuleDef __pyx_moduledef = {
 
 static __Pyx_StringTabEntry __pyx_string_tab[] = {
   {&__pyx_kp_s_Hello_s, __pyx_k_Hello_s, sizeof(__pyx_k_Hello_s), 0, 0, 1, 0},
-  {&__pyx_n_s_MemoryError, __pyx_k_MemoryError, sizeof(__pyx_k_MemoryError), 0, 0, 1, 1},
-  {&__pyx_n_s_TypeError, __pyx_k_TypeError, sizeof(__pyx_k_TypeError), 0, 0, 1, 1},
+  {&__pyx_n_s_adlink, __pyx_k_adlink, sizeof(__pyx_k_adlink), 0, 0, 1, 1},
+  {&__pyx_kp_s_adlink_pyx, __pyx_k_adlink_pyx, sizeof(__pyx_k_adlink_pyx), 0, 0, 1, 0},
   {&__pyx_kp_s_byte_string_value_is_NULL, __pyx_k_byte_string_value_is_NULL, sizeof(__pyx_k_byte_string_value_is_NULL), 0, 0, 1, 0},
+  {&__pyx_n_s_card_num, __pyx_k_card_num, sizeof(__pyx_k_card_num), 0, 0, 1, 1},
+  {&__pyx_n_s_card_type, __pyx_k_card_type, sizeof(__pyx_k_card_type), 0, 0, 1, 1},
   {&__pyx_n_s_cline_in_traceback, __pyx_k_cline_in_traceback, sizeof(__pyx_k_cline_in_traceback), 0, 0, 1, 1},
   {&__pyx_n_s_end, __pyx_k_end, sizeof(__pyx_k_end), 0, 0, 1, 1},
   {&__pyx_n_s_file, __pyx_k_file, sizeof(__pyx_k_file), 0, 0, 1, 1},
-  {&__pyx_n_s_getstate, __pyx_k_getstate, sizeof(__pyx_k_getstate), 0, 0, 1, 1},
-  {&__pyx_n_s_hello, __pyx_k_hello, sizeof(__pyx_k_hello), 0, 0, 1, 1},
-  {&__pyx_kp_s_hello_pyx, __pyx_k_hello_pyx, sizeof(__pyx_k_hello_pyx), 0, 0, 1, 0},
+  {&__pyx_n_s_link, __pyx_k_link, sizeof(__pyx_k_link), 0, 0, 1, 1},
   {&__pyx_n_s_main, __pyx_k_main, sizeof(__pyx_k_main), 0, 0, 1, 1},
   {&__pyx_n_s_name, __pyx_k_name, sizeof(__pyx_k_name), 0, 0, 1, 1},
-  {&__pyx_n_s_name_2, __pyx_k_name_2, sizeof(__pyx_k_name_2), 0, 0, 1, 1},
-  {&__pyx_kp_s_no_default___reduce___due_to_non, __pyx_k_no_default___reduce___due_to_non, sizeof(__pyx_k_no_default___reduce___due_to_non), 0, 0, 1, 0},
   {&__pyx_n_s_print, __pyx_k_print, sizeof(__pyx_k_print), 0, 0, 1, 1},
-  {&__pyx_n_s_reduce, __pyx_k_reduce, sizeof(__pyx_k_reduce), 0, 0, 1, 1},
-  {&__pyx_n_s_reduce_cython, __pyx_k_reduce_cython, sizeof(__pyx_k_reduce_cython), 0, 0, 1, 1},
-  {&__pyx_n_s_reduce_ex, __pyx_k_reduce_ex, sizeof(__pyx_k_reduce_ex), 0, 0, 1, 1},
+  {&__pyx_n_s_r, __pyx_k_r, sizeof(__pyx_k_r), 0, 0, 1, 1},
   {&__pyx_n_s_say_hello_to, __pyx_k_say_hello_to, sizeof(__pyx_k_say_hello_to), 0, 0, 1, 1},
-  {&__pyx_n_s_setstate, __pyx_k_setstate, sizeof(__pyx_k_setstate), 0, 0, 1, 1},
-  {&__pyx_n_s_setstate_cython, __pyx_k_setstate_cython, sizeof(__pyx_k_setstate_cython), 0, 0, 1, 1},
   {&__pyx_n_s_sin2, __pyx_k_sin2, sizeof(__pyx_k_sin2), 0, 0, 1, 1},
   {&__pyx_n_s_test, __pyx_k_test, sizeof(__pyx_k_test), 0, 0, 1, 1},
   {0, 0, 0, 0, 0, 0, 0}
 };
 static int __Pyx_InitCachedBuiltins(void) {
-  __pyx_builtin_MemoryError = __Pyx_GetBuiltinName(__pyx_n_s_MemoryError); if (!__pyx_builtin_MemoryError) __PYX_ERR(0, 9, __pyx_L1_error)
-  __pyx_builtin_TypeError = __Pyx_GetBuiltinName(__pyx_n_s_TypeError); if (!__pyx_builtin_TypeError) __PYX_ERR(1, 2, __pyx_L1_error)
   return 0;
-  __pyx_L1_error:;
-  return -1;
 }
 
 static int __Pyx_InitCachedConstants(void) {
   __Pyx_RefNannyDeclarations
   __Pyx_RefNannySetupContext("__Pyx_InitCachedConstants", 0);
 
-  /* "(tree fragment)":2
- * def __reduce_cython__(self):
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
- * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- */
-  __pyx_tuple_ = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple_)) __PYX_ERR(1, 2, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple_);
-  __Pyx_GIVEREF(__pyx_tuple_);
-
-  /* "(tree fragment)":4
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")
- * def __setstate_cython__(self, __pyx_state):
- *     raise TypeError("no default __reduce__ due to non-trivial __cinit__")             # <<<<<<<<<<<<<<
- */
-  __pyx_tuple__2 = PyTuple_Pack(1, __pyx_kp_s_no_default___reduce___due_to_non); if (unlikely(!__pyx_tuple__2)) __PYX_ERR(1, 4, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__2);
-  __Pyx_GIVEREF(__pyx_tuple__2);
-
-  /* "hello.pyx":18
+  /* "adlink.pyx":9
  *     assert s is not NULL, "byte string value is NULL"
  *     return atoi(s)   # note: atoi() has no error detection!
  * def say_hello_to(name):             # <<<<<<<<<<<<<<
  *     print("Hello %s!" % name)
  * def sin2(name):
  */
-  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_name_2); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 18, __pyx_L1_error)
-  __Pyx_GOTREF(__pyx_tuple__3);
-  __Pyx_GIVEREF(__pyx_tuple__3);
-  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_hello_pyx, __pyx_n_s_say_hello_to, 18, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_tuple_ = PyTuple_Pack(1, __pyx_n_s_name); if (unlikely(!__pyx_tuple_)) __PYX_ERR(0, 9, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple_);
+  __Pyx_GIVEREF(__pyx_tuple_);
+  __pyx_codeobj__2 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple_, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_adlink_pyx, __pyx_n_s_say_hello_to, 9, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__2)) __PYX_ERR(0, 9, __pyx_L1_error)
 
-  /* "hello.pyx":20
+  /* "adlink.pyx":11
  * def say_hello_to(name):
  *     print("Hello %s!" % name)
  * def sin2(name):             # <<<<<<<<<<<<<<
  *     return f(name)
+ * def link():
  */
-  __pyx_tuple__5 = PyTuple_Pack(1, __pyx_n_s_name_2); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_tuple__3 = PyTuple_Pack(1, __pyx_n_s_name); if (unlikely(!__pyx_tuple__3)) __PYX_ERR(0, 11, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_tuple__3);
+  __Pyx_GIVEREF(__pyx_tuple__3);
+  __pyx_codeobj__4 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__3, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_adlink_pyx, __pyx_n_s_sin2, 11, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__4)) __PYX_ERR(0, 11, __pyx_L1_error)
+
+  /* "adlink.pyx":13
+ * def sin2(name):
+ *     return f(name)
+ * def link():             # <<<<<<<<<<<<<<
+ *     cdef int r, card_type, card_num
+ *     card_type=21#9111
+ */
+  __pyx_tuple__5 = PyTuple_Pack(3, __pyx_n_s_r, __pyx_n_s_card_type, __pyx_n_s_card_num); if (unlikely(!__pyx_tuple__5)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_tuple__5);
   __Pyx_GIVEREF(__pyx_tuple__5);
-  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(1, 0, 1, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_hello_pyx, __pyx_n_s_sin2, 20, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_codeobj__6 = (PyObject*)__Pyx_PyCode_New(0, 0, 3, 0, CO_OPTIMIZED|CO_NEWLOCALS, __pyx_empty_bytes, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_tuple__5, __pyx_empty_tuple, __pyx_empty_tuple, __pyx_kp_s_adlink_pyx, __pyx_n_s_link, 13, __pyx_empty_bytes); if (unlikely(!__pyx_codeobj__6)) __PYX_ERR(0, 13, __pyx_L1_error)
   __Pyx_RefNannyFinishContext();
   return 0;
   __pyx_L1_error:;
@@ -1752,11 +1431,11 @@ static int __Pyx_InitGlobals(void) {
 }
 
 #if PY_MAJOR_VERSION < 3
-PyMODINIT_FUNC inithello(void); /*proto*/
-PyMODINIT_FUNC inithello(void)
+PyMODINIT_FUNC initadlink(void); /*proto*/
+PyMODINIT_FUNC initadlink(void)
 #else
-PyMODINIT_FUNC PyInit_hello(void); /*proto*/
-PyMODINIT_FUNC PyInit_hello(void)
+PyMODINIT_FUNC PyInit_adlink(void); /*proto*/
+PyMODINIT_FUNC PyInit_adlink(void)
 #if CYTHON_PEP489_MULTI_PHASE_INIT
 {
   return PyModuleDef_Init(&__pyx_moduledef);
@@ -1796,7 +1475,7 @@ bad:
 }
 
 
-static int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_module)
+static int __pyx_pymod_exec_adlink(PyObject *__pyx_pyinit_module)
 #endif
 #endif
 {
@@ -1814,7 +1493,7 @@ static int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_module)
           Py_FatalError("failed to import 'refnanny' module");
   }
   #endif
-  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_hello(void)", 0);
+  __Pyx_RefNannySetupContext("PyMODINIT_FUNC PyInit_adlink(void)", 0);
   if (__Pyx_check_binary_version() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_tuple = PyTuple_New(0); if (unlikely(!__pyx_empty_tuple)) __PYX_ERR(0, 1, __pyx_L1_error)
   __pyx_empty_bytes = PyBytes_FromStringAndSize("", 0); if (unlikely(!__pyx_empty_bytes)) __PYX_ERR(0, 1, __pyx_L1_error)
@@ -1850,7 +1529,7 @@ static int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_module)
   Py_INCREF(__pyx_m);
   #else
   #if PY_MAJOR_VERSION < 3
-  __pyx_m = Py_InitModule4("hello", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
+  __pyx_m = Py_InitModule4("adlink", __pyx_methods, 0, 0, PYTHON_API_VERSION); Py_XINCREF(__pyx_m);
   #else
   __pyx_m = PyModule_Create(&__pyx_moduledef);
   #endif
@@ -1869,14 +1548,14 @@ static int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_module)
   #if PY_MAJOR_VERSION < 3 && (__PYX_DEFAULT_STRING_ENCODING_IS_ASCII || __PYX_DEFAULT_STRING_ENCODING_IS_DEFAULT)
   if (__Pyx_init_sys_getdefaultencoding_params() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
-  if (__pyx_module_is_main_hello) {
+  if (__pyx_module_is_main_adlink) {
     if (PyObject_SetAttrString(__pyx_m, "__name__", __pyx_n_s_main) < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   }
   #if PY_MAJOR_VERSION >= 3
   {
     PyObject *modules = PyImport_GetModuleDict(); if (unlikely(!modules)) __PYX_ERR(0, 1, __pyx_L1_error)
-    if (!PyDict_GetItemString(modules, "hello")) {
-      if (unlikely(PyDict_SetItemString(modules, "hello", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
+    if (!PyDict_GetItemString(modules, "adlink")) {
+      if (unlikely(PyDict_SetItemString(modules, "adlink", __pyx_m) < 0)) __PYX_ERR(0, 1, __pyx_L1_error)
     }
   }
   #endif
@@ -1888,11 +1567,6 @@ static int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_module)
   /*--- Variable export code ---*/
   /*--- Function export code ---*/
   /*--- Type init code ---*/
-  if (PyType_Ready(&__pyx_type_5hello_Queue) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  __pyx_type_5hello_Queue.tp_print = 0;
-  if (PyObject_SetAttrString(__pyx_m, "Queue", (PyObject *)&__pyx_type_5hello_Queue) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  if (__Pyx_setup_reduce((PyObject*)&__pyx_type_5hello_Queue) < 0) __PYX_ERR(0, 4, __pyx_L1_error)
-  __pyx_ptype_5hello_Queue = &__pyx_type_5hello_Queue;
   /*--- Type import code ---*/
   /*--- Variable import code ---*/
   /*--- Function import code ---*/
@@ -1901,33 +1575,46 @@ static int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_module)
   if (__Pyx_patch_abc() < 0) __PYX_ERR(0, 1, __pyx_L1_error)
   #endif
 
-  /* "hello.pyx":18
+  /* "adlink.pyx":9
  *     assert s is not NULL, "byte string value is NULL"
  *     return atoi(s)   # note: atoi() has no error detection!
  * def say_hello_to(name):             # <<<<<<<<<<<<<<
  *     print("Hello %s!" % name)
  * def sin2(name):
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5hello_1say_hello_to, NULL, __pyx_n_s_hello); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 18, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6adlink_1say_hello_to, NULL, __pyx_n_s_adlink); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_say_hello_to, __pyx_t_1) < 0) __PYX_ERR(0, 18, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_say_hello_to, __pyx_t_1) < 0) __PYX_ERR(0, 9, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "hello.pyx":20
+  /* "adlink.pyx":11
  * def say_hello_to(name):
  *     print("Hello %s!" % name)
  * def sin2(name):             # <<<<<<<<<<<<<<
  *     return f(name)
+ * def link():
  */
-  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_5hello_3sin2, NULL, __pyx_n_s_hello); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 20, __pyx_L1_error)
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6adlink_3sin2, NULL, __pyx_n_s_adlink); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
-  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sin2, __pyx_t_1) < 0) __PYX_ERR(0, 20, __pyx_L1_error)
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_sin2, __pyx_t_1) < 0) __PYX_ERR(0, 11, __pyx_L1_error)
   __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
 
-  /* "hello.pyx":1
+  /* "adlink.pyx":13
+ * def sin2(name):
+ *     return f(name)
+ * def link():             # <<<<<<<<<<<<<<
+ *     cdef int r, card_type, card_num
+ *     card_type=21#9111
+ */
+  __pyx_t_1 = PyCFunction_NewEx(&__pyx_mdef_6adlink_5link, NULL, __pyx_n_s_adlink); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_GOTREF(__pyx_t_1);
+  if (PyDict_SetItem(__pyx_d, __pyx_n_s_link, __pyx_t_1) < 0) __PYX_ERR(0, 13, __pyx_L1_error)
+  __Pyx_DECREF(__pyx_t_1); __pyx_t_1 = 0;
+
+  /* "adlink.pyx":1
  * from libc.stdlib cimport atoi             # <<<<<<<<<<<<<<
  * from libc.math cimport sin
- * cimport cqueue
+ * cimport adlinklib
  */
   __pyx_t_1 = __Pyx_PyDict_NewPresized(0); if (unlikely(!__pyx_t_1)) __PYX_ERR(0, 1, __pyx_L1_error)
   __Pyx_GOTREF(__pyx_t_1);
@@ -1941,11 +1628,11 @@ static int __pyx_pymod_exec_hello(PyObject *__pyx_pyinit_module)
   __Pyx_XDECREF(__pyx_t_1);
   if (__pyx_m) {
     if (__pyx_d) {
-      __Pyx_AddTraceback("init hello", 0, __pyx_lineno, __pyx_filename);
+      __Pyx_AddTraceback("init adlink", 0, __pyx_lineno, __pyx_filename);
     }
     Py_DECREF(__pyx_m); __pyx_m = 0;
   } else if (!PyErr_Occurred()) {
-    PyErr_SetString(PyExc_ImportError, "init hello");
+    PyErr_SetString(PyExc_ImportError, "init adlink");
   }
   __pyx_L0:;
   __Pyx_RefNannyFinishContext();
@@ -1976,106 +1663,6 @@ end:
 }
 #endif
 
-/* GetBuiltinName */
-static PyObject *__Pyx_GetBuiltinName(PyObject *name) {
-    PyObject* result = __Pyx_PyObject_GetAttrStr(__pyx_b, name);
-    if (unlikely(!result)) {
-        PyErr_Format(PyExc_NameError,
-#if PY_MAJOR_VERSION >= 3
-            "name '%U' is not defined", name);
-#else
-            "name '%.200s' is not defined", PyString_AS_STRING(name));
-#endif
-    }
-    return result;
-}
-
-/* RaiseArgTupleInvalid */
-static void __Pyx_RaiseArgtupleInvalid(
-    const char* func_name,
-    int exact,
-    Py_ssize_t num_min,
-    Py_ssize_t num_max,
-    Py_ssize_t num_found)
-{
-    Py_ssize_t num_expected;
-    const char *more_or_less;
-    if (num_found < num_min) {
-        num_expected = num_min;
-        more_or_less = "at least";
-    } else {
-        num_expected = num_max;
-        more_or_less = "at most";
-    }
-    if (exact) {
-        more_or_less = "exactly";
-    }
-    PyErr_Format(PyExc_TypeError,
-                 "%.200s() takes %.8s %" CYTHON_FORMAT_SSIZE_T "d positional argument%.1s (%" CYTHON_FORMAT_SSIZE_T "d given)",
-                 func_name, more_or_less, num_expected,
-                 (num_expected == 1) ? "" : "s", num_found);
-}
-
-/* KeywordStringCheck */
-static int __Pyx_CheckKeywordStrings(
-    PyObject *kwdict,
-    const char* function_name,
-    int kw_allowed)
-{
-    PyObject* key = 0;
-    Py_ssize_t pos = 0;
-#if CYTHON_COMPILING_IN_PYPY
-    if (!kw_allowed && PyDict_Next(kwdict, &pos, &key, 0))
-        goto invalid_keyword;
-    return 1;
-#else
-    while (PyDict_Next(kwdict, &pos, &key, 0)) {
-        #if PY_MAJOR_VERSION < 3
-        if (unlikely(!PyString_Check(key)))
-        #endif
-            if (unlikely(!PyUnicode_Check(key)))
-                goto invalid_keyword_type;
-    }
-    if ((!kw_allowed) && unlikely(key))
-        goto invalid_keyword;
-    return 1;
-invalid_keyword_type:
-    PyErr_Format(PyExc_TypeError,
-        "%.200s() keywords must be strings", function_name);
-    return 0;
-#endif
-invalid_keyword:
-    PyErr_Format(PyExc_TypeError,
-    #if PY_MAJOR_VERSION < 3
-        "%.200s() got an unexpected keyword argument '%.200s'",
-        function_name, PyString_AsString(key));
-    #else
-        "%s() got an unexpected keyword argument '%U'",
-        function_name, key);
-    #endif
-    return 0;
-}
-
-/* PyObjectCall */
-#if CYTHON_COMPILING_IN_CPYTHON
-static CYTHON_INLINE PyObject* __Pyx_PyObject_Call(PyObject *func, PyObject *arg, PyObject *kw) {
-    PyObject *result;
-    ternaryfunc call = func->ob_type->tp_call;
-    if (unlikely(!call))
-        return PyObject_Call(func, arg, kw);
-    if (unlikely(Py_EnterRecursiveCall((char*)" while calling a Python object")))
-        return NULL;
-    result = (*call)(func, arg, kw);
-    Py_LeaveRecursiveCall();
-    if (unlikely(!result) && unlikely(!PyErr_Occurred())) {
-        PyErr_SetString(
-            PyExc_SystemError,
-            "NULL result without error in PyObject_Call");
-    }
-    return result;
-}
-#endif
-
 /* PyErrFetchRestore */
 #if CYTHON_FAST_THREAD_STATE
 static CYTHON_INLINE void __Pyx_ErrRestoreInState(PyThreadState *tstate, PyObject *type, PyObject *value, PyObject *tb) {
@@ -2099,241 +1686,6 @@ static CYTHON_INLINE void __Pyx_ErrFetchInState(PyThreadState *tstate, PyObject 
     tstate->curexc_traceback = 0;
 }
 #endif
-
-/* RaiseException */
-#if PY_MAJOR_VERSION < 3
-static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb,
-                        CYTHON_UNUSED PyObject *cause) {
-    __Pyx_PyThreadState_declare
-    Py_XINCREF(type);
-    if (!value || value == Py_None)
-        value = NULL;
-    else
-        Py_INCREF(value);
-    if (!tb || tb == Py_None)
-        tb = NULL;
-    else {
-        Py_INCREF(tb);
-        if (!PyTraceBack_Check(tb)) {
-            PyErr_SetString(PyExc_TypeError,
-                "raise: arg 3 must be a traceback or None");
-            goto raise_error;
-        }
-    }
-    if (PyType_Check(type)) {
-#if CYTHON_COMPILING_IN_PYPY
-        if (!value) {
-            Py_INCREF(Py_None);
-            value = Py_None;
-        }
-#endif
-        PyErr_NormalizeException(&type, &value, &tb);
-    } else {
-        if (value) {
-            PyErr_SetString(PyExc_TypeError,
-                "instance exception may not have a separate value");
-            goto raise_error;
-        }
-        value = type;
-        type = (PyObject*) Py_TYPE(type);
-        Py_INCREF(type);
-        if (!PyType_IsSubtype((PyTypeObject *)type, (PyTypeObject *)PyExc_BaseException)) {
-            PyErr_SetString(PyExc_TypeError,
-                "raise: exception class must be a subclass of BaseException");
-            goto raise_error;
-        }
-    }
-    __Pyx_PyThreadState_assign
-    __Pyx_ErrRestore(type, value, tb);
-    return;
-raise_error:
-    Py_XDECREF(value);
-    Py_XDECREF(type);
-    Py_XDECREF(tb);
-    return;
-}
-#else
-static void __Pyx_Raise(PyObject *type, PyObject *value, PyObject *tb, PyObject *cause) {
-    PyObject* owned_instance = NULL;
-    if (tb == Py_None) {
-        tb = 0;
-    } else if (tb && !PyTraceBack_Check(tb)) {
-        PyErr_SetString(PyExc_TypeError,
-            "raise: arg 3 must be a traceback or None");
-        goto bad;
-    }
-    if (value == Py_None)
-        value = 0;
-    if (PyExceptionInstance_Check(type)) {
-        if (value) {
-            PyErr_SetString(PyExc_TypeError,
-                "instance exception may not have a separate value");
-            goto bad;
-        }
-        value = type;
-        type = (PyObject*) Py_TYPE(value);
-    } else if (PyExceptionClass_Check(type)) {
-        PyObject *instance_class = NULL;
-        if (value && PyExceptionInstance_Check(value)) {
-            instance_class = (PyObject*) Py_TYPE(value);
-            if (instance_class != type) {
-                int is_subclass = PyObject_IsSubclass(instance_class, type);
-                if (!is_subclass) {
-                    instance_class = NULL;
-                } else if (unlikely(is_subclass == -1)) {
-                    goto bad;
-                } else {
-                    type = instance_class;
-                }
-            }
-        }
-        if (!instance_class) {
-            PyObject *args;
-            if (!value)
-                args = PyTuple_New(0);
-            else if (PyTuple_Check(value)) {
-                Py_INCREF(value);
-                args = value;
-            } else
-                args = PyTuple_Pack(1, value);
-            if (!args)
-                goto bad;
-            owned_instance = PyObject_Call(type, args, NULL);
-            Py_DECREF(args);
-            if (!owned_instance)
-                goto bad;
-            value = owned_instance;
-            if (!PyExceptionInstance_Check(value)) {
-                PyErr_Format(PyExc_TypeError,
-                             "calling %R should have returned an instance of "
-                             "BaseException, not %R",
-                             type, Py_TYPE(value));
-                goto bad;
-            }
-        }
-    } else {
-        PyErr_SetString(PyExc_TypeError,
-            "raise: exception class must be a subclass of BaseException");
-        goto bad;
-    }
-    if (cause) {
-        PyObject *fixed_cause;
-        if (cause == Py_None) {
-            fixed_cause = NULL;
-        } else if (PyExceptionClass_Check(cause)) {
-            fixed_cause = PyObject_CallObject(cause, NULL);
-            if (fixed_cause == NULL)
-                goto bad;
-        } else if (PyExceptionInstance_Check(cause)) {
-            fixed_cause = cause;
-            Py_INCREF(fixed_cause);
-        } else {
-            PyErr_SetString(PyExc_TypeError,
-                            "exception causes must derive from "
-                            "BaseException");
-            goto bad;
-        }
-        PyException_SetCause(value, fixed_cause);
-    }
-    PyErr_SetObject(type, value);
-    if (tb) {
-#if CYTHON_COMPILING_IN_PYPY
-        PyObject *tmp_type, *tmp_value, *tmp_tb;
-        PyErr_Fetch(&tmp_type, &tmp_value, &tmp_tb);
-        Py_INCREF(tb);
-        PyErr_Restore(tmp_type, tmp_value, tb);
-        Py_XDECREF(tmp_tb);
-#else
-        PyThreadState *tstate = __Pyx_PyThreadState_Current;
-        PyObject* tmp_tb = tstate->curexc_traceback;
-        if (tb != tmp_tb) {
-            Py_INCREF(tb);
-            tstate->curexc_traceback = tb;
-            Py_XDECREF(tmp_tb);
-        }
-#endif
-    }
-bad:
-    Py_XDECREF(owned_instance);
-    return;
-}
-#endif
-
-/* SetupReduce */
-static int __Pyx_setup_reduce_is_named(PyObject* meth, PyObject* name) {
-  int ret;
-  PyObject *name_attr;
-  name_attr = __Pyx_PyObject_GetAttrStr(meth, __pyx_n_s_name);
-  if (likely(name_attr)) {
-      ret = PyObject_RichCompareBool(name_attr, name, Py_EQ);
-  } else {
-      ret = -1;
-  }
-  if (unlikely(ret < 0)) {
-      PyErr_Clear();
-      ret = 0;
-  }
-  Py_XDECREF(name_attr);
-  return ret;
-}
-static int __Pyx_setup_reduce(PyObject* type_obj) {
-    int ret = 0;
-    PyObject *object_reduce = NULL;
-    PyObject *object_reduce_ex = NULL;
-    PyObject *reduce = NULL;
-    PyObject *reduce_ex = NULL;
-    PyObject *reduce_cython = NULL;
-    PyObject *setstate = NULL;
-    PyObject *setstate_cython = NULL;
-#if CYTHON_USE_PYTYPE_LOOKUP
-    if (_PyType_Lookup((PyTypeObject*)type_obj, __pyx_n_s_getstate)) goto GOOD;
-#else
-    if (PyObject_HasAttr(type_obj, __pyx_n_s_getstate)) goto GOOD;
-#endif
-#if CYTHON_USE_PYTYPE_LOOKUP
-    object_reduce_ex = _PyType_Lookup(&PyBaseObject_Type, __pyx_n_s_reduce_ex); if (!object_reduce_ex) goto BAD;
-#else
-    object_reduce_ex = __Pyx_PyObject_GetAttrStr((PyObject*)&PyBaseObject_Type, __pyx_n_s_reduce_ex); if (!object_reduce_ex) goto BAD;
-#endif
-    reduce_ex = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_reduce_ex); if (unlikely(!reduce_ex)) goto BAD;
-    if (reduce_ex == object_reduce_ex) {
-#if CYTHON_USE_PYTYPE_LOOKUP
-        object_reduce = _PyType_Lookup(&PyBaseObject_Type, __pyx_n_s_reduce); if (!object_reduce) goto BAD;
-#else
-        object_reduce = __Pyx_PyObject_GetAttrStr((PyObject*)&PyBaseObject_Type, __pyx_n_s_reduce); if (!object_reduce) goto BAD;
-#endif
-        reduce = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_reduce); if (unlikely(!reduce)) goto BAD;
-        if (reduce == object_reduce || __Pyx_setup_reduce_is_named(reduce, __pyx_n_s_reduce_cython)) {
-            reduce_cython = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_reduce_cython); if (unlikely(!reduce_cython)) goto BAD;
-            ret = PyDict_SetItem(((PyTypeObject*)type_obj)->tp_dict, __pyx_n_s_reduce, reduce_cython); if (unlikely(ret < 0)) goto BAD;
-            ret = PyDict_DelItem(((PyTypeObject*)type_obj)->tp_dict, __pyx_n_s_reduce_cython); if (unlikely(ret < 0)) goto BAD;
-            setstate = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_setstate);
-            if (!setstate) PyErr_Clear();
-            if (!setstate || __Pyx_setup_reduce_is_named(setstate, __pyx_n_s_setstate_cython)) {
-                setstate_cython = __Pyx_PyObject_GetAttrStr(type_obj, __pyx_n_s_setstate_cython); if (unlikely(!setstate_cython)) goto BAD;
-                ret = PyDict_SetItem(((PyTypeObject*)type_obj)->tp_dict, __pyx_n_s_setstate, setstate_cython); if (unlikely(ret < 0)) goto BAD;
-                ret = PyDict_DelItem(((PyTypeObject*)type_obj)->tp_dict, __pyx_n_s_setstate_cython); if (unlikely(ret < 0)) goto BAD;
-            }
-            PyType_Modified((PyTypeObject*)type_obj);
-        }
-    }
-    goto GOOD;
-BAD:
-    if (!PyErr_Occurred())
-        PyErr_Format(PyExc_RuntimeError, "Unable to initialize pickling for %s", ((PyTypeObject*)type_obj)->tp_name);
-    ret = -1;
-GOOD:
-#if !CYTHON_USE_PYTYPE_LOOKUP
-    Py_XDECREF(object_reduce);
-    Py_XDECREF(object_reduce_ex);
-#endif
-    Py_XDECREF(reduce);
-    Py_XDECREF(reduce_ex);
-    Py_XDECREF(reduce_cython);
-    Py_XDECREF(setstate);
-    Py_XDECREF(setstate_cython);
-    return ret;
-}
 
 /* CLineInTraceback */
 #ifndef CYTHON_CLINE_IN_TRACEBACK

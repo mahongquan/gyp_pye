@@ -1,3 +1,4 @@
-import hello
-print(dir(hello))
-print(hello.sin2(1))
+import adlink
+print(dir(adlink))
+print(adlink.sin2(1))
+adlink.link()

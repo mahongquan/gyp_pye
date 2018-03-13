@@ -5,6 +5,7 @@ static PyObject *adlinkError;
 //static int value_;
 static I16 obj_card;
 static I16 obj_card6208;
+
 //static boolean obj_linked;
 
 boolean BitIsSet(U32 Number, U16 Bit)

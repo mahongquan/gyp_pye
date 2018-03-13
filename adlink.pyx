@@ -1,15 +1,6 @@
 from libc.stdlib cimport atoi
 from libc.math cimport sin
-cimport cqueue
-cdef class Queue:
-    cdef cqueue.Queue* _c_queue
-    def __cinit__(self):
-        self._c_queue = cqueue.queue_new()
-        if self._c_queue is NULL:
-            raise MemoryError()
-    def __dealloc__(self):
-        if self._c_queue is not NULL:
-            cqueue.queue_free(self._c_queue)
+cimport adlinklib
 cdef double f(double x):
     return sin(x*x)
 cdef parse_charptr_to_py_int(char* s):
@@ -19,3 +10,9 @@ def say_hello_to(name):
     print("Hello %s!" % name)
 def sin2(name):
     return f(name)
+def link():
+    cdef int r, card_type, card_num
+    card_type=21#9111
+    card_num=0
+    r=adlinklib.Register_Card(card_type,card_num)
+    print(r)
