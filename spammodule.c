@@ -1,6 +1,91 @@
 #include <Python.h>
+#include <windows.h>
+#include "dask.h"
 static PyObject *SpamError;
-static PyObject * spam_system(PyObject *self, PyObject *args)
+static int value_;
+static I16 obj_card;
+static I16 obj_card6208;
+static boolean obj_linked;
+
+boolean BitIsSet(U32 Number, U16 Bit)
+{
+    return (Number >> Bit & 0x01);
+}
+void setChannelOff(U32 *DO_Value, U16 channel)
+{
+    if(channel > 15) return;
+    U16 v = 1 << channel;
+    *DO_Value = (v ^ 0xFFFFFFFF) & (*DO_Value);
+}
+void setChannelOn(U32 *DO_Value, U16 channel)
+{
+    if(channel > 15) return;
+    U16 v = 1 << channel;
+    *DO_Value = (*DO_Value) | (v);
+}
+U32 GetDI()
+{
+    U32 Value;
+    U16 Port = P9111_CHANNEL_DI;
+    I16 err = DI_ReadPort(obj_card, Port, &Value);//U16 CardNumber, U16 Port, U32 *Value
+    if (err != 0)
+    {
+        printf("read error=%d\n", err);
+        return 0;
+    }
+    return(Value);
+}//func
+U32 GetDO()
+{
+    U32 Value;
+    U16 Port = P9111_CHANNEL_DO;
+    I16 err = DO_ReadPort(obj_card, Port, &Value);//U16 CardNumber, U16 Port, U32 *Value
+    if (err != 0)
+    {
+        printf("read error=%d\n", err);
+        return 0;
+    }
+    return(Value);
+}//func
+static   I16 Link()
+{
+    I16  err, card_num = 0;
+    printf("card=%d\n", obj_card);
+    obj_card = Register_Card (PCI_9111HR, card_num);
+    if (obj_card < 0 )
+    {
+        printf("Register_Card error=%d", obj_card);
+        //obj_linked = false;
+        return obj_card;
+    }
+    else
+    {
+        printf("card=%d\n", obj_card);
+    }
+    err = AI_9111_Config(obj_card, TRIG_INT_PACER, 0, 1024);
+    if (err != 0)
+    {
+        printf("AI_9111_Config error=%d", err);
+        //obj_linked = false;
+        return err;
+    }
+    printf("card2=%d\n", obj_card6208);
+    obj_card6208 = Register_Card (PCI_6208V, card_num);
+    if (obj_card6208 < 0 )
+    {
+        printf("Register_Card error=%d", obj_card6208);
+        //obj_linked = false;
+        return obj_card6208;
+    }
+    else
+    {
+        printf("card=%d", obj_card6208);
+    }
+    //obj_linked = true;
+    return(obj_card);
+}
+
+static PyObject *spam_system(PyObject *self, PyObject *args)
 {
     const char *command;
     int sts;
@@ -10,12 +95,48 @@ static PyObject * spam_system(PyObject *self, PyObject *args)
     sts = system(command);
     return PyLong_FromLong(sts);
 }
-static PyMethodDef SpamMethods[] = {
-    {"system",  spam_system, METH_VARARGS,
-     "Execute a shell command."},
+static PyObject *spam_plusOne(PyObject *self, PyObject *args)
+{
+    const char *command;
+    int para2 = 0;
+    int sts;
+
+    if (!PyArg_ParseTuple(args, "si", &command, &para2))
+        return NULL;
+    printf("%d\n", para2);
+    value_ += para2;
+    return PyLong_FromLong(value_);
+}
+static PyObject *spam_getDI(PyObject *self, PyObject *args)
+{
+    U32 value=GetDI();
+    return PyLong_FromLong(value);
+}
+
+static PyObject *spam_getDO(PyObject *self, PyObject *args)
+{
+    U32 value=GetDO();
+    return PyLong_FromLong(value);
+}
+
+static PyObject *spam_link(PyObject *self, PyObject *args)
+{
+    //value_+=para2;
+    U16 r = Link();
+    return PyLong_FromLong(r);
+}
+
+static PyMethodDef SpamMethods[] =
+{
+    {"system",  spam_system, METH_VARARGS,  "Execute a shell command."},
+    {"link",  spam_link, METH_VARARGS,  "link."},
+    {"getDO",  spam_getDO, METH_VARARGS,  "GetDO."},
+    {"getDI",  spam_getDI, METH_VARARGS,  "GetDI."},
+    {"plusOne",  spam_plusOne, METH_VARARGS,  "plus one."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
-static struct PyModuleDef spammodule = {
+static struct PyModuleDef spammodule =
+{
     PyModuleDef_HEAD_INIT,
     "spam",   /* name of module */
     NULL, /* module documentation, may be NULL */
@@ -26,7 +147,9 @@ static struct PyModuleDef spammodule = {
 PyMODINIT_FUNC PyInit_spam(void)
 {
     PyObject *m;
-
+    value_ = 0;
+    obj_card = -1;
+    obj_card6208 = -1;
     m = PyModule_Create(&spammodule);
     if (m == NULL)
         return NULL;

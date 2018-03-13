@@ -37,17 +37,17 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Default|Win32'">
     <ClCompile>
-      <AdditionalIncludeDirectories>D:\Python36-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Python36-32\include;C:\ADLINK\PCIS-DASK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <CompileAsWinRT>false</CompileAsWinRT>
       <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>D:\Python36-32\libs\python36.lib</AdditionalDependencies>
+      <AdditionalDependencies>D:\Python36-32\libs\python36.lib;C:\ADLINK\PCIS-DASK\lib\pci-dask.lib</AdditionalDependencies>
       <OutputFile>.\$(ProjectName).pyd</OutputFile>
       <TargetExt>.pyd</TargetExt>
     </Link>
     <ResourceCompile>
-      <AdditionalIncludeDirectories>D:\Python36-32\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Python36-32\include;C:\ADLINK\PCIS-DASK\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ResourceCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
