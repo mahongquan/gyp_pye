@@ -1,6 +1,6 @@
 import adlink
 print(dir(adlink))
-print(adlink.plusOne("echo 'hello'",6))
+#print(adlink.plusOne("echo 'hello'",6))
 r=adlink.link()
 print("=======")
 print(r)

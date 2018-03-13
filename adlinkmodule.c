@@ -2,10 +2,10 @@
 #include <windows.h>
 #include "dask.h"
 static PyObject *adlinkError;
-static int value_;
+//static int value_;
 static I16 obj_card;
 static I16 obj_card6208;
-static boolean obj_linked;
+//static boolean obj_linked;
 
 boolean BitIsSet(U32 Number, U16 Bit)
 {
@@ -110,28 +110,28 @@ static   I16 Link()
     return(obj_card);
 }
 
-static PyObject *adlink_system(PyObject *self, PyObject *args)
-{
-    const char *command;
-    int sts;
+// static PyObject *adlink_system(PyObject *self, PyObject *args)
+// {
+//     const char *command;
+//     int sts;
 
-    if (!PyArg_ParseTuple(args, "s", &command))
-        return NULL;
-    sts = system(command);
-    return PyLong_FromLong(sts);
-}
-static PyObject *adlink_plusOne(PyObject *self, PyObject *args)
-{
-    const char *command;
-    int para2 = 0;
-    int sts;
+//     if (!PyArg_ParseTuple(args, "s", &command))
+//         return NULL;
+//     sts = system(command);
+//     return PyLong_FromLong(sts);
+// }
+// static PyObject *adlink_plusOne(PyObject *self, PyObject *args)
+// {
+//     const char *command;
+//     int para2 = 0;
+//     int sts;
 
-    if (!PyArg_ParseTuple(args, "si", &command, &para2))
-        return NULL;
-    printf("%d\n", para2);
-    value_ += para2;
-    return PyLong_FromLong(value_);
-}
+//     if (!PyArg_ParseTuple(args, "si", &command, &para2))
+//         return NULL;
+//     printf("%d\n", para2);
+//     value_ += para2;
+//     return PyLong_FromLong(value_);
+// }
 static PyObject *adlink_GetchanelVolt (PyObject *self, PyObject *args)
 {
     int para2 = 0;
@@ -171,13 +171,13 @@ static PyObject *adlink_link(PyObject *self, PyObject *args)
 
 static PyMethodDef adlinkMethods[] =
 {
-    {"system",  adlink_system, METH_VARARGS,  "Execute a shell command."},
+    //{"system",  adlink_system, METH_VARARGS,  "Execute a shell command."},
     {"link",  adlink_link, METH_VARARGS,  "link."},
     {"getDO",  adlink_getDO, METH_VARARGS,  "GetDO."},
     {"getDI",  adlink_getDI, METH_VARARGS,  "GetDI."},
     {"getchanelVolt",  adlink_GetchanelVolt, METH_VARARGS,  "GetchanelVolt" },
     {"putchanelVolt",  adlink_PutchanelVolt, METH_VARARGS,  "PutchanelVolt" },
-    {"plusOne",  adlink_plusOne, METH_VARARGS,  "plus one."},
+    //{"plusOne",  adlink_plusOne, METH_VARARGS,  "plus one."},
     {NULL, NULL, 0, NULL}        /* Sentinel */
 };
 static struct PyModuleDef adlinkmodule =
@@ -192,7 +192,6 @@ static struct PyModuleDef adlinkmodule =
 PyMODINIT_FUNC PyInit_adlink(void)
 {
     PyObject *m;
-    value_ = 0;
     obj_card = -1;
     obj_card6208 = -1;
     m = PyModule_Create(&adlinkmodule);
